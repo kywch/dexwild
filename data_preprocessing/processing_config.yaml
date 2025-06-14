@@ -1,0 +1,14 @@
+hands:
+  left_hand:
+    cube_size: 8
+    marker_size: 6.4
+    transformation: [0, 0, 0.10, 0, 0, 0]
+    marker_ids: [null, 46, 44, 45, 47, 43]
+    corner_faces: left
+
+  right_hand:
+    cube_size: 8
+    marker_size: 6.4
+    transformation: [0, 0, 0.10, 0, 0, 0]
+    marker_ids: [null, 3, 0, 4, 5, 2]
+    corner_faces: right

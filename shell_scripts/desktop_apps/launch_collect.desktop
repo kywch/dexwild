@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Terminal=true
+Exec=/home/tony/dexwild/shell_scripts/launch_tmux.sh
+Name=record
+Icon=/home/tony/dexwild/shell_scripts/imgs/record.png

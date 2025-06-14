@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Terminal=true
+Exec=/home/tony/dexwild/shell_scripts/kill_tmux.sh
+Name=kill
+Icon=/home/tony/dexwild/shell_scripts/imgs/stop.png

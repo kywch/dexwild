@@ -1,0 +1,25 @@
+session_name: record_data
+windows:
+  - window_name: ALL
+    layout: tiled
+    panes:
+    - shell_command:
+      - sudo ./launch_docker.sh
+    - shell_command:
+      - sleep 10
+      - sudo ./run_glove.sh
+    - shell_command:
+      - sleep 10
+      - source /opt/ros/foxy/setup.bash
+      - source ../install/setup.bash
+      - ros2 launch ../launch/hand_collect_data.launch.py
+    - shell_command:
+      - sleep 20
+      - source /opt/ros/foxy/setup.bash
+      - source ../install/setup.bash
+      - ros2 launch ../launch/synchronize_hand_data.launch.py
+
+
+
+
+    

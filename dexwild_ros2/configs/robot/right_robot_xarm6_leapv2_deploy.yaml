@@ -1,0 +1,54 @@
+right_mobile_gello_node:
+  ros__parameters:
+    id: right_mobile
+    port: /dev/serial/by-id/usb-FTDI_USB__-__Serial_Converter_FT8ISEQG-if00-port0 # Set to a specific port if needed
+
+right_xarm_node:
+  ros__parameters:
+    xarm_ip: "192.168.1.228"
+    arm_id: right_mobile
+    teleop: False
+    use_rmp: False
+
+right_franka_node:
+  ros__parameters:
+    franka_IP: "172.26.9.131"
+    id: right_franka
+
+leap_v2_node_right:
+  ros__parameters:
+    port: /dev/serial/by-id/usb-FTDI_USB__-__Serial_Converter_FT78LTIG-if00-port0
+    isLeft: False
+
+palm_camera_node:
+  ros__parameters:
+    cameras: [right_thumb, right_pinky]
+    serials: ["00010", "00001"] # left_thumb, left_pinky, right_thumb, right_pinky
+    fourcc: MJPG
+    width: 320
+    height: 240
+    fps: 60
+    superwide: True
+
+zed_node:
+  ros__parameters:
+    serial: 16352271 #13909734
+    which_hands: [""]
+    visualize: False
+    zed_live: True # run when running on the robot
+
+ticker_node:
+  ros__parameters:
+    rate: 30.0
+
+data_sync_node:
+  ros__parameters:
+    topics:
+      [
+        "/right/thumb_camera_im",
+        "/right/pinky_camera_im",
+        /arm/right_mobile/obs_eef_pose,
+        "/ticker",
+      ]
+    rosbag_collect: False
+    collect_data_mode: False

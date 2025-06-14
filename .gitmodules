@@ -1,0 +1,3 @@
+[submodule "dit-policy"]
+	path = dit-policy
+	url = git@github.com:mohanksriram/dit-policy.git

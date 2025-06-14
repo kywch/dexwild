@@ -1,0 +1,88 @@
+left_mobile_gello_node:
+  ros__parameters:
+    id: left_mobile
+    port: /dev/serial/by-id/usb-FTDI_USB__-__Serial_Converter_FT7WBGG1-if00-port0 # Set to a specific port if needed
+
+right_mobile_gello_node:
+  ros__parameters:
+    id: right_mobile
+    port: /dev/serial/by-id/usb-FTDI_USB__-__Serial_Converter_FT8ISEQG-if00-port0 # Set to a specific port if needed
+
+left_xarm_node:
+  ros__parameters:
+    xARM_IP: "192.168.1.224"
+    id: left_mobile
+    teleop: True
+    use_rmp: False
+
+right_xarm_node:
+  ros__parameters:
+    xarm_ip: "192.168.1.228"
+    arm_id: right_mobile
+    teleop: True
+    use_rmp: False
+
+leap_v2_node_left:
+  ros__parameters:
+    port: /dev/serial/by-id/usb-FTDI_USB__-__Serial_Converter_FT8ISVLF-if00-port0
+    isLeft: True
+
+leap_v2_node_right:
+  ros__parameters:
+    port: /dev/serial/by-id/usb-FTDI_USB__-__Serial_Converter_FT78LTIG-if00-port0
+    isLeft: False
+
+leap_v2_ik_left:
+  ros__parameters:
+    isLeft: True
+
+leap_v2_ik_right:
+  ros__parameters:
+    isLeft: False
+
+palm_camera_node:
+  ros__parameters:
+    cameras: [left_thumb, left_pinky, right_thumb, right_pinky]
+    serials: ["00002", "00008", "00010", "00001"] # left_thumb, left_pinky, right_thumb, right_pinky
+    fourcc: MJPG
+    width: 320
+    height: 240
+    fps: 60
+    superwide: True
+
+glove_node:
+  ros__parameters:
+    left_glove_sn: "45a7fc8f"
+    right_glove_sn: "8569617b"
+
+zed_node:
+  ros__parameters:
+    serial: 13909734 # 16352271
+    which_hands: [""]
+    visualize: True
+
+ticker_node:
+  ros__parameters:
+    rate: 30.0
+
+data_sync_node:
+  ros__parameters:
+    topics: [
+        /left/thumb_camera_im,
+        /left/pinky_camera_im,
+        /right/thumb_camera_im,
+        /right/pinky_camera_im,
+
+        /ticker,
+        /glove/l_short,
+        /glove/r_short,
+        /glove/l_full,
+        /glove/r_full,
+
+        /arm/left_mobile/obs_eef_pose,
+        /arm/right_mobile/obs_eef_pose,
+        /leapv2_node/cmd_raw_leap_l,
+        /leapv2_node/cmd_raw_leap_r,
+      ]
+    rosbag_collect: False
+    collect_data_mode: True

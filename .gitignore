@@ -1,0 +1,60 @@
+# ============================================
+# Python bytecode and package metadata
+# ============================================
+__pycache__/
+*.py[cod]
+*.pyo
+*.egg-info/
+.egg
+*.eggs/
+*.manifest
+*.spec
+
+# ============================================
+# Editor/project files
+# ============================================
+*.iml
+*.swp
+.project
+.pydevproject
+.DS_Store
+.idea/
+.vscode/
+
+# ============================================
+# ROS 2 / colcon build artifacts
+# ============================================
+build/
+install/
+log/
+
+# ============================================
+# Data and logs (keep specific subdirs if needed)
+# ============================================
+/bags/
+/data*
+!/data_preprocessing/
+/all_data/
+/logs/
+*.log
+
+# ============================================
+# Checkpoints, training output, models
+# ============================================
+train/*/
+!/train/robobuf/
+*.pth
+*.ckpt
+
+# ============================================
+# Images and media
+# ============================================
+*.jpg
+*.jpeg
+*.bmp
+
+# ============================================
+# Misc
+# ============================================
+.env
+*.sqlite3

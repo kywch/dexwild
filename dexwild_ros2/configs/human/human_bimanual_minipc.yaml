@@ -1,0 +1,46 @@
+glove_node:
+  ros__parameters:
+    left_glove_sn: "45a7fc8f"
+    right_glove_sn: "8569617b"
+
+palm_camera_node:
+  ros__parameters:
+    cameras: [left_thumb, left_pinky, right_thumb, right_pinky]
+    serials: ["00006", "00009", "00011", "00012"] # left_thumb, left_pinky, right_thumb, right_pinky
+    fourcc: MJPG
+    width: 320
+    height: 240
+    fps: 60
+    superwide: True
+
+head_camera_node:
+  ros__parameters:
+    serial: "00002"
+    fourcc: MJPG
+    width: 1280
+    height: 720
+    fps: 30
+
+zed_node:
+  ros__parameters:
+    serial: 16352271 #13909734
+    visualize: True
+
+data_sync_node:
+  ros__parameters:
+    topics: [
+        "/left/thumb_camera_im",
+        "/left/pinky_camera_im",
+        "/right/thumb_camera_im",
+        "/right/pinky_camera_im",
+        # "/head/camera_im",
+        # "/head/gray_camera_im",
+        # '/zed/im',
+        "/zed_ts",
+        "/glove/r_short",
+        "/glove/l_short",
+        "/glove/r_full",
+        "/glove/l_full",
+      ]
+    rosbag_collect: False
+    collect_data_mode: True
