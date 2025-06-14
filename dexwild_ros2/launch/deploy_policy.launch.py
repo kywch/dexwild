@@ -23,7 +23,6 @@ def generate_launch_description():
     )
     
     assert os.path.exists(config_file), f"Config file not found at {config_file}"
-    
 
     right_xarm_node = Node(
         package='xarm_control',        
@@ -70,10 +69,9 @@ def generate_launch_description():
         executable='deploy_policy',       
         name='deploy_policy_node',       
         output='screen',               
-        parameters=[{"checkpoint_path":
-            "/home/alfredo/telekinesis_3/train/remote_models/final_models/toy_cotrain_2to1_48ac_0_9_18_eef/toy_cotrain_2to1_48ac_0_9_18_eef_500000.pth",
+        parameters=[{"checkpoint_path": "path to your checkpoint",
                 
-            "replay_path": "/home/alfredo/telekinesis_3/all_data/test_buffers/florist_bimanual_human_abs_not_normalized_all_apr19/small_buffer.pkl",
+            "replay_path": "path to your robo buffer buffer",
             "replay_id": 46,
             
             "id": "right_mobile",
@@ -89,8 +87,6 @@ def generate_launch_description():
             "rot_repr": "rot6d", # "euler", "quat", "rot6d"
             
             "buffer_size": 19,
-        
-            "mask": False,
             
             "ema_amount": 0.5,
             "use_rmp": False,
@@ -107,12 +103,9 @@ def generate_launch_description():
                 # "rel_mixed"
                 # "abs"
                 "hybrid",
-                # "rel_intergripper"
                 
                 # "replay_rel"
-                # "replay_rel_abs"
                 # "replay_abs"
-                # "replay_rel_intergripper"
         }]
     )
     

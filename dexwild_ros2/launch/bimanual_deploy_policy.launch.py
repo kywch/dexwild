@@ -96,13 +96,9 @@ def generate_launch_description():
         parameters=[
             
             {
-            "checkpoint_path": 
-            # NOTE FINAL EVALS FOR VIDEO
-            "/home/alfredo/telekinesis_3/train/remote_models/final_models/cloth_cotrain_2to1_48ac_0_9_18_eef_intergripper_trimmed/cloth_cotrain_2to1_48ac_0_9_18_eef_intergripper_trimmed_1000000.pth",
-            # "/home/alfredo/telekinesis_3/train/remote_models/final_models/Florist_cotrain_2to1_48ac_0_9_18_eef_intergripper_umi_aug/Florist_cotrain_2to1_48ac_0_9_18_eef_intergripper_umi_aug_1000000.pth",
-            # "/home/alfredo/telekinesis_3/train/remote_models/final_models/florist_diffusion_cotrain_2to1_48ac_0_9_18_eef_intergripper/florist_diffusion_cotrain_2to1_48ac_0_9_18_eef_intergripper_2000000.pth",
+            "checkpoint_path": "Path to your model checkpoint",  # Replace with your model path
             
-            "replay_path": "/home/alfredo/telekinesis_3/all_data/test_buffers/florist_bimanual_human_abs_not_normalized_all_apr19/small_buffer.pkl",
+            "replay_path": "Path to your replay data",  # Replace with your replay path
             "replay_id": 46,
             
             "id": "bimanual",
@@ -118,9 +114,6 @@ def generate_launch_description():
             
             # HISTORY 
             "buffer_size": 19,
-            
-            # MASKING
-            "mask": False,
             
             # SMOOTHING
             "ema_amount": 0.5,
@@ -141,9 +134,7 @@ def generate_launch_description():
                 # "rel_intergripper"
                 
                 # "replay_rel"
-                # "replay_rel_abs"
                 # "replay_abs"
-                # "replay_rel_intergripper"
             }]
     )
     

@@ -22,6 +22,8 @@
 
 </div>
 
+---
+
 # Overview of Repository
 
 Folder Structure:
@@ -42,7 +44,7 @@ Folder Structure:
 
 ## 🛠️ Hardware Guide
 
-Setup hardware components following this [Hardware Guide]()
+Setup hardware components following this [Hardware Guide](https://resisted-salad-9e6.notion.site/DexWild-Hardware-Setup-Guide-20eee3f68d27801b8eb8dfde3a5bb7c4?source=copy_link)
 
 ## ⚙️ Environment Setup (Main Computer)
 Only tested on Ubuntu 22.04.
@@ -55,7 +57,7 @@ Since ROS2 has common compatibility issues with conda, we recommend installing e
 
 3. Clone this repository and cd into the directory:
     ```bash
-    git clone LINK
+    git clone git@github.com:dexwild/dexwild.git
     cd dexwild
     ```
 4. Install Dependencies
@@ -115,7 +117,7 @@ Core Dependencies:
 
 4. Clone this repository and cd into the directory:
     ```bash
-    git clone LINK
+    git clone git@github.com:dexwild/dexwild.git
     cd ~/dexwild
     ```
 5. Install Dependencies
@@ -181,7 +183,7 @@ Core Dependencies:
 
 ## 📈 Data Collection Instructions
 
-Follow [Data Collection Instruction]() to collect data.
+Follow [Data Collection Instruction](https://resisted-salad-9e6.notion.site/DexWild-Data-Collection-Guide-20fee3f68d27803b9a88ef9847e292d4?source=copy_link) to collect data.
 
 Data is saved in the following structure:
 ```bash
@@ -318,7 +320,6 @@ chmod +x dataset_to_robobuf.sh
 ./dataset_to_robobuf.sh
 ```
 
-
 # Training
 
 To train the policy, all data must be in robobuf format.
@@ -326,14 +327,56 @@ To train the policy, all data must be in robobuf format.
 First clone the repository used for training.
 
 ```bash
-git clone LINK
+git clone https://github.com/dexwild/dexwild-training
 cd ~/dexwild-training
 ```
 
-Follow the install instructions in the repository.
-
+Follow the install and training instructions in the [training repository]().
 
 # Deployment
+
+There are two launch files for deployment, one for single arm and single hand, and the other for bimanual. Within each launch file, the main parameters to change are as listed below:
+
+```bash
+"checkpoint_path":  # Path to the trained policy checkpoint
+"replay_path":  # Path to the input Robobuf replay data
+"replay_id":  # Index of the episode in the replay buffer to play
+"id":  # Identifier for setup type (e.g., "bimanual", "left_mobile")
+"observation_keys":  # List of sensor keys used as inputs to the policy
+
+"openloop_length":  # Number of steps to run before running inference again
+"skip_first_actions":  # Number of initial actions to skip (to account for delay)
+
+"freq":  # Control loop frequency in Hz
+"rot_repr":  # Rotation representation used for actions ("euler", "quat", "rot6d")
+
+"buffer_size":  # Number of past steps to keep for input to model. Must be at least max length of history for policy.
+
+"ema_amount":  # Exponential moving average weight for action smoothing
+"use_rmp":  # If True, uses Riemannian Motion Policy (RMP) controller
+
+"start_poses":  # Initial arm poses at start of episode (flattened list)
+"start_hand_poses":  # Initial hand poses at start of episode (flattened list)
+
+"pred_horizon":  # How many future steps the model predicts for ensembling
+"exp_weight":  # Weight for blending old vs new predictions (0 = only latest) for ensembling
+
+"mode":  # Action interpretation mode ("rel", "abs", "hybrid", etc.)
+```
+
+## Single Arm Deployment
+```bash
+cd ~/dexwild
+cd dexwild_ros2
+ros2 launch launch/deploy_policy.launch.py
+```
+
+## Bimanual Deployment
+```bash
+cd ~/dexwild
+cd dexwild_ros2
+ros2 launch launch/bimanual_deploy_policy.launch.py
+```
 
 # Citation
 If you find this project useful, please cite our work:
