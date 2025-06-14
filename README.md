@@ -14,7 +14,7 @@
 [[Project page]](https://dexwild.github.io/) [[Video]](https://youtu.be/oMaamSkcl5E) [[ArXiv]](https://arxiv.org/abs/2505.07813) 
 
 
-[[Hardware Guide]](https://resisted-salad-9e6.notion.site/DexWild-Hardware-Setup-Guide-20eee3f68d27801b8eb8dfde3a5bb7c4?source=copy_link) [[Data Collection Guide]](https://resisted-salad-9e6.notion.site/DexWild-Data-Collection-Guide-20fee3f68d27803b9a88ef9847e292d4?source=copy_link) [[Policy Training]]()
+[[Hardware Guide]](https://resisted-salad-9e6.notion.site/DexWild-Hardware-Setup-Guide-20eee3f68d27801b8eb8dfde3a5bb7c4?source=copy_link) [[Data Collection Guide]](https://resisted-salad-9e6.notion.site/DexWild-Data-Collection-Guide-20fee3f68d27803b9a88ef9847e292d4?source=copy_link) [[Policy Training]](https://github.com/dexwild/dexwild-training)
 
 
 [![Linux platform](https://img.shields.io/badge/Platform-linux--64-orange.svg)](https://ubuntu.com/blog/tag/22-04-lts) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)]()
@@ -331,7 +331,7 @@ git clone https://github.com/dexwild/dexwild-training
 cd ~/dexwild-training
 ```
 
-Follow the install and training instructions in the [training repository]().
+Follow the install and training instructions in the [training repository](https://github.com/dexwild/dexwild-training).
 
 # Deployment
 
