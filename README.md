@@ -53,6 +53,11 @@ Core Dependencies:
 1. Install [ROS2 Humble](https://docs.ros.org/en/humble/Installation/Ubuntu-Install-Debs.html) on your machine.
 2. Install [ZED SDK 4.2](https://www.stereolabs.com/docs/installation/linux) on your machine. Make sure it is the correct version (4.2).
 
+    You can download the ZED SDK using this command.
+    ```bash
+    wget -O ZED_SDK_Ubuntu22_cuda12.1_v4.2.5.zstd.run "https://download.stereolabs.com/zedsdk/4.2/cu12/ubuntu22?_gl=1*1m7mgu9*_gcl_au*NDQ4NjIzMzIzLjE3NDk5NTE2NjE."
+    ```
+
 Since ROS2 has common compatibility issues with conda, we recommend installing everything into the **base system python**.
 
 3. Clone this repository and cd into the directory:
@@ -60,6 +65,7 @@ Since ROS2 has common compatibility issues with conda, we recommend installing e
     git clone git@github.com:dexwild/dexwild.git
     cd dexwild
     ```
+
 4. Install Dependencies
     ```bash
     pip install -r requirements.txt
@@ -91,6 +97,11 @@ Only tested on Nvidia [Jetpack 5.1.1](https://developer.nvidia.com/embedded/jetp
 Core Dependencies:
 1. Install [ROS2 Foxy](https://docs.ros.org/en/foxy/Installation.html) on your machine. If using later version of Jetpack, [ROS2 Humble](https://docs.ros.org/en/humble/Installation/Ubuntu-Install-Debs.html) will also work.
 2. Install [ZED SDK 4.2](https://www.stereolabs.com/docs/installation/linux) on your machine. Make sure it is the correct version (4.2).
+
+    You can download the ZED SDK using this command.
+    ```bash
+    wget -O ZED_SDK_Ubuntu22_cuda12.1_v4.2.5.zstd.run "https://download.stereolabs.com/zedsdk/4.2/cu12/ubuntu22?_gl=1*1m7mgu9*_gcl_au*NDQ4NjIzMzIzLjE3NDk5NTE2NjE."
+    ```
 
 3. Docker Image For Manus SDK
     Pull the docker image from docker hub
@@ -133,6 +144,7 @@ Core Dependencies:
 
 7. Build ROS Packages
     ```bash
+    cd ..
     cd dexwild_ros2
     source /opt/ros/foxy/setup.bash
     # alternatively
@@ -166,7 +178,7 @@ Core Dependencies:
     
     Similarly, update the paths such that the paths have your username.
     
-    Last, copy the desktop files to your applications folder
+    Copy the desktop files to your applications folder
 
     ```bash
     mkdir -p ~/.local/share/applications
@@ -179,7 +191,16 @@ Core Dependencies:
     update-desktop-database ~/.local/share/applications/
     ```
 
-    Lastly, it helps to favorite the apps so that they appear in the sidebar for easy access.
+    Lastly, some shell scripts need sudo access. Give them sudo access by using `visudo`
+
+    ```bash
+    sudo visudo
+
+    # In visudo paste the following lines. Take care to update your username and path to the shell scripts (under shell_scripts in ~/dexwild)
+    USERNAME ALL=(ALL) NOPASSWD: /path/to/run_glove.sh, /path/to/launch_docker.sh
+    ```
+
+    Note: It helps to favorite the apps so that they appear in the sidebar for easy access.
 
 ## 📈 Data Collection Instructions
 

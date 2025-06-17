@@ -299,6 +299,13 @@ def make_one_path3d(tracked_pose):
     ax.set_ylabel('Y')
     ax.set_zlabel('Z')
     
+    # Adjust the axes to equal scale
+    
+    # Set axis limits
+    ax.set_xlim(points[:, 0].min(), points[:, 0].max())
+    ax.set_ylim(points[:, 1].min(), points[:, 1].max())
+    ax.set_zlim(points[:, 2].min(), points[:, 2].max())
+    
     set_axes_equal(ax)
     
     norm = colors.Normalize(vmin=0, vmax=len(points) - 1)
