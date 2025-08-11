@@ -24,15 +24,13 @@ if __name__ == "__main__":
     parser.add_argument('--cameras', type=int, nargs='+', default=[5], help='List of camera indices to test')
     args = parser.parse_args()
     
-    camera_paths= [5] 
-
     cameras = {}
 
     target_fps = 60
     width = 640 #320
     height = 320  #240
 
-    for path in camera_paths:
+    for path in args.cameras:
         # Open the camera
         cap = cv2.VideoCapture(path)
 
@@ -53,6 +51,8 @@ if __name__ == "__main__":
             
             print(f"Camera {path} native resolution: {original_width}x{original_height} at {original_fps} FPS with FourCC: {fourcc_to_string}")
             
+            # To prevent 'select() timeout' errors with multiple cameras, use compressed format
+            cap.set(cv2.CAP_PROP_FOURCC, cv2.VideoWriter_fourcc(*'MJPG'))
             cap.set(cv2.CAP_PROP_FRAME_WIDTH, width)
             cap.set(cv2.CAP_PROP_FRAME_HEIGHT, height)
             cap.set(cv2.CAP_PROP_FPS, target_fps)
